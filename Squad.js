@@ -1,12 +1,13 @@
 const squad = {
     army: 0,
+    squad: 0,
     soldiers: [],
     vehicles: [],
     attackStrategy: 'random'
 }
 
-const Squad = (army, soldiers, vehicles, attackStrategy) => {
-    let squad = Object.assign({}, army, soldiers, vehicles, attackStrategy);
+const Squad = (armyId, squadId, soldiers, vehicles, attackStrategy) => {
+    let squad = Object.assign({}, armyId, squadId, soldiers, vehicles, attackStrategy);
     return squad;
 }
 

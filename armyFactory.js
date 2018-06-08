@@ -1,9 +1,9 @@
 const Unit = require('./Unit');
 const Squad = require('./Squad');
 
-const Army = (squads) => {
+const Army = (army, squads) => {
 
-    let Army = Object.assign({}, squads);
+    let Army = Object.assign({}, army, squads);
     return Army;
 }
 
@@ -16,9 +16,9 @@ const creator = armiesParams => {
             for(let j=0;j<army.units;j++){
                 soldiers.push(Unit.Soldier());
             }
-            squads.push(Squad({army: army.army}, {soldiers: soldiers}, {vehicles: []}, {attackStrategy: army.strategy}));
+            squads.push(Squad({army: army.army}, {squad: i}, {soldiers: soldiers}, {vehicles: []}, {attackStrategy: army.strategy}));
         }
-        armies[army.army] = Army({squads: squads, army: army.army});
+        armies[army.army] = Army({army: army.army}, {squads: squads});
     });
     return armies;
 }
