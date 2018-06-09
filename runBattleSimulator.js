@@ -1,11 +1,11 @@
 const Validator = require('./inputValidator');
-const armyFactory = require('./armyFactory');
-const battle = require('./battle');
+const armyFactory = require('./Model/armyFactory');
+const battleEngine = require('./battle');
 
 const args = process.argv.slice(2);
 const Battleground = Validator.validate(args);
 const Armies = armyFactory.create(Battleground.armies);
-const battleOutcome = battle(Armies);
+const battleOutcome = battleEngine(Armies);
 
 var stdin = process.openStdin();
 
