@@ -18,7 +18,7 @@ const creator = armiesParams => {
             }
             squads.push(Squad({army: army.army}, {squad: i}, {soldiers: soldiers}, {vehicles: []}, {attackStrategy: army.strategy}));
         }
-        armies[army.army] = Army({army: army.army}, {squads: squads});
+        armies[army.army] = Army({army: army.army, squadNo: army.squads}, {squads: squads});
     });
     return armies;
 }

@@ -13,11 +13,21 @@ const Soldier = () => {
     let soldier = Object.assign({}, Unit, experience);
 
     soldier.attack = () => {
+        if (soldier.health <= 0) return 0;
         return 0.5 * (1 + soldier.health/100) * getRandomInt(30 + soldier.experience, 100)/100;
     }
 
     soldier.damage = () => {
+        if (soldier.health <= 0) return 0;
         return 0.05 + soldier.experience / 100;
+    }
+
+    soldier.takeDamage = damage => {
+        soldier.health = soldier.health - damage;
+    }
+
+    soldier.gainExperience = () => {
+        soldier.experience ++;
     }
 
     return soldier;
