@@ -1,11 +1,3 @@
-const turn = 0;
-
-//who is attacking? since all units have recharge, this may should be completly different
-const getTurn = (armiesCount) => {
-    if(turn > armiesCount) turn = 0;
-    return turn++;
-}
-
 const productAttackCallback = (acc,cur) => {
     return acc * cur.attack();
 }
