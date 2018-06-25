@@ -1,6 +1,6 @@
 const Validator = require('./inputValidator');
 const battlegroundFactory = require('./Model/battlegroundFactory');
-const battleEngine = require('./battle');
+const battleEngine = require('./battleAsync');
 
 const args = process.argv.slice(2);
 const BattleInput = Validator.validate(args);

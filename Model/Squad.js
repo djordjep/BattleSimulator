@@ -6,6 +6,14 @@ const squad = {
     attackStrategy: 'random'
 }
 
+const productAttackCallback = (acc,cur) => {
+    return acc * cur.attack();
+}
+
+const sumDamageCallback = (acc,cur) => {
+    return acc + cur.damage();
+}
+
 const Squad = (armyId, squadId, soldiers, vehicles, attackStrategy) => {
     let squad = Object.assign({}, armyId, squadId, soldiers, vehicles, attackStrategy);
 
@@ -33,6 +41,20 @@ const Squad = (armyId, squadId, soldiers, vehicles, attackStrategy) => {
         squad.soldiers.map(soldier => {
             soldier.gainExperience();
         });
+    }
+
+    squad.recharge = () => {
+        return squad.soldiers.map(soldier => {
+            return soldier.recharge(soldier.rechargeTime);
+        });
+    }
+
+    squad.attack = () => {
+        return Math.pow(squad.soldiers.reduce(productAttackCallback, 1.0), 1.0 / squad.soldiers.length).toFixed(2);
+    }
+    
+    squad.damage = () => {
+        return squad.soldiers.reduce(sumDamageCallback, 0).toFixed(2);
     }
 
 
